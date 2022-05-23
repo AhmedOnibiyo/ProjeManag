@@ -8,6 +8,8 @@ import android.view.WindowManager
 import android.widget.Toast
 import com.ahmedonibiyo.projemanag.R
 import com.ahmedonibiyo.projemanag.databinding.ActivitySignInBinding
+import com.ahmedonibiyo.projemanag.firebase.FireStoreClass
+import com.ahmedonibiyo.projemanag.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
@@ -49,6 +51,12 @@ class SignInActivity : BaseActivity() {
         }
     }
 
+    fun signInSuccess(user: User) {
+        hideProgressBar()
+        startActivity(Intent(this, MainActivity::class.java))
+        finish()
+    }
+
     private fun signInRegisteredUser() {
         val email = binding.etEmail.text.toString().trim() { it <= ' ' }
         val password = binding.etPassword.text.toString().trim() { it <= ' ' }
@@ -60,13 +68,8 @@ class SignInActivity : BaseActivity() {
                 if (task.isSuccessful) {
                     val firebaseUser: FirebaseUser = task.result!!.user!!
                     val registeredEmail = firebaseUser.email!!
-                    Toast.makeText(
-                        this,
-                        "You have successfully signed in",
-                        Toast.LENGTH_LONG
-                    ).show()
-                    startActivity(Intent(this, MainActivity::class.java))
-                    finish()
+
+                    FireStoreClass().signInUser(this)
                 } else {
                     Log.w("Sign in", task.exception!!.message.toString())
                     Toast.makeText(

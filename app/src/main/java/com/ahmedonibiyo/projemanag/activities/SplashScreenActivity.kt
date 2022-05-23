@@ -9,6 +9,7 @@ import android.view.WindowManager
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.ahmedonibiyo.projemanag.R
+import com.ahmedonibiyo.projemanag.firebase.FireStoreClass
 
 @Suppress("DEPRECATION")
 @SuppressLint("CustomSplashScreen")
@@ -28,7 +29,14 @@ class SplashScreenActivity : AppCompatActivity() {
         tvAppName.typeface = typeFace
 
         Handler().postDelayed({
-            startActivity(Intent(this, IntroActivity::class.java))
+            val currentUserID = FireStoreClass().getCurrentUserID()
+
+            if (currentUserID.isNotEmpty()) {
+                startActivity(Intent(this, MainActivity::class.java))
+            } else {
+                startActivity(Intent(this, IntroActivity::class.java))
+            }
+
             finish()
         }, 2500)
     }
