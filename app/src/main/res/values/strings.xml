@@ -15,4 +15,7 @@
     <string name="please_wait">Please Wait</string>
 
     <string name="please_click_back_again_to_exit">Please Click Back Again To Exit</string>
+
+    <string name="nav_my_profile">My Profile</string>
+    <string name="nav_sign_out">Sign Out</string>
 </resources>
