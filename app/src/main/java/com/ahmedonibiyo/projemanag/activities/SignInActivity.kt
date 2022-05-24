@@ -69,7 +69,7 @@ class SignInActivity : BaseActivity() {
                     val firebaseUser: FirebaseUser = task.result!!.user!!
                     val registeredEmail = firebaseUser.email!!
 
-                    FireStoreClass().signInUser(this)
+                    FireStoreClass().loadUserData(this)
                 } else {
                     Log.w("Sign in", task.exception!!.message.toString())
                     Toast.makeText(

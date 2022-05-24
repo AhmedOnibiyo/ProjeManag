@@ -28,7 +28,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
         nav_view.setNavigationItemSelectedListener(this)
 
-        FireStoreClass().signInUser(this)
+        FireStoreClass().loadUserData(this)
     }
 
     private fun setupActionBar() {
