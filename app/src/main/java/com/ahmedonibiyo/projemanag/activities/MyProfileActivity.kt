@@ -205,6 +205,8 @@ class MyProfileActivity : BaseActivity() {
 
     fun profileUpdateSuccess() {
         hideProgressBar()
+
+        setResult(Activity.RESULT_OK)
         finish()
     }
 }
