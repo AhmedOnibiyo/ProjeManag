@@ -3,10 +3,8 @@ package com.ahmedonibiyo.projemanag.firebase
 import android.app.Activity
 import android.util.Log
 import android.widget.Toast
-import com.ahmedonibiyo.projemanag.activities.MainActivity
-import com.ahmedonibiyo.projemanag.activities.MyProfileActivity
-import com.ahmedonibiyo.projemanag.activities.SignInActivity
-import com.ahmedonibiyo.projemanag.activities.SignUpActivity
+import com.ahmedonibiyo.projemanag.activities.*
+import com.ahmedonibiyo.projemanag.models.Board
 import com.ahmedonibiyo.projemanag.models.User
 import com.ahmedonibiyo.projemanag.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
@@ -75,6 +73,27 @@ class FireStoreClass {
                     }
                 }
                 Log.e(activity.javaClass.simpleName, "Error getting document", e)
+            }
+    }
+
+    fun createBoard(activity: CreateBoardActivity, board: Board) {
+        firestore.collection(Constants.BOARDS)
+            .document()
+            .set(board, SetOptions.merge())
+            .addOnSuccessListener {
+                Log.i(activity.javaClass.simpleName, "Board created successfully")
+                Toast.makeText(
+                    activity,
+                    "Board created successfully", Toast.LENGTH_LONG
+                ).show()
+                activity.boardCreatedSuccessfully()
+            }
+            .addOnFailureListener { e ->
+                Log.e(
+                    activity.javaClass.simpleName,
+                    "Error while creating a board",
+                    e
+                )
             }
     }
 

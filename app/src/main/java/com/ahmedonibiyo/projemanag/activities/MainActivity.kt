@@ -10,6 +10,7 @@ import com.ahmedonibiyo.projemanag.R
 import com.ahmedonibiyo.projemanag.databinding.ActivityMainBinding
 import com.ahmedonibiyo.projemanag.firebase.FireStoreClass
 import com.ahmedonibiyo.projemanag.models.User
+import com.ahmedonibiyo.projemanag.utils.Constants
 import com.bumptech.glide.Glide
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
@@ -24,6 +25,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var mUserName: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +37,12 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         nav_view.setNavigationItemSelectedListener(this)
 
         FireStoreClass().loadUserData(this)
+
+        fab_create_board.setOnClickListener {
+            val intent = Intent(this, CreateBoardActivity::class.java)
+            intent.putExtra(Constants.NAME, mUserName)
+            startActivity(intent)
+        }
     }
 
     private fun setupActionBar() {
@@ -95,6 +103,8 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     fun updateNavigationUserDetails(user: User) {
+        mUserName = user.name
+
         Glide
             .with(this)
             .load(user.image)
