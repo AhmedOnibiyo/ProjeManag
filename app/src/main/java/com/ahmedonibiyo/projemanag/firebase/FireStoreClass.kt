@@ -119,6 +119,21 @@ class FireStoreClass {
             }
     }
 
+    fun getBoardDetails(activity: TaskListActivity, documentId: String) {
+        firestore.collection(Constants.BOARDS)
+            .document(documentId)
+            .get()
+            .addOnSuccessListener { document ->
+                Log.i(activity.javaClass.simpleName, document.toString())
+
+                activity.boardDetails(document.toObject(Board::class.java)!!)
+            }
+            .addOnFailureListener { e ->
+                activity.hideProgressBar()
+                Log.e(activity.javaClass.simpleName, "Error while creating a board", e)
+            }
+    }
+
     fun getCurrentUserID(): String {
         val currentUser = FirebaseAuth.getInstance().currentUser
         var currentUserID = ""

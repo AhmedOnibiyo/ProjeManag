@@ -152,6 +152,9 @@ class CreateBoardActivity : BaseActivity() {
 
     fun boardCreatedSuccessfully() {
         hideProgressBar()
+
+        setResult(Activity.RESULT_OK)
+
         finish()
     }
 
