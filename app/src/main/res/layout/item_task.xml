@@ -24,6 +24,7 @@
             android:textColor="@color/colorAccent"
             android:textSize="@dimen/task_item_add_item_text_size"
             android:visibility="gone"
+            tools:ignore="TextContrastCheck"
             tools:visibility="visible" />
 
         <androidx.cardview.widget.CardView
