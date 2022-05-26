@@ -38,5 +38,16 @@
     <string name="add_member">Add Member</string>
     <string name="search_member">Search Member</string>
     <string name="add">ADD</string>
-    <string name="cancel">CANCEL</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="label_color">Label Color</string>
+    <string name="select_color">Select Color</string>
+    <string name="select_members">Select Members</string>
+    <string name="due_date">Due Date</string>
+    <string name="select_due_date">Select Due Date</string>
+    <string name="delete_card">Delete Card</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="alert">Alert</string>
+    <string name="confirmation_message_to_delete_card">Are you sure you want to delete \'%1$s\'?</string>
 </resources>

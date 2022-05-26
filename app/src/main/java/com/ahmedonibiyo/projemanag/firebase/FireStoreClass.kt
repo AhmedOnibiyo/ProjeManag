@@ -136,7 +136,7 @@ class FireStoreClass {
             }
     }
 
-    fun updateTaskList(activity: TaskListActivity, board: Board) {
+    fun updateTaskList(activity: Activity, board: Board) {
         val taskListHashMap = HashMap<String, Any>()
         taskListHashMap[Constants.TASK_LIST] = board.taskList
 
@@ -146,10 +146,16 @@ class FireStoreClass {
             .addOnSuccessListener {
                 Log.i(activity.javaClass.simpleName, "TaskList updated successfully")
 
-                activity.updateTaskListSuccess()
+                if (activity is TaskListActivity)
+                    activity.updateTaskListSuccess()
+                else if (activity is CardDetailsActivity)
+                    activity.updateTaskListSuccess()
             }
             .addOnFailureListener { e ->
-                activity.hideProgressBar()
+                if (activity is TaskListActivity)
+                    activity.hideProgressBar()
+                else if (activity is CardDetailsActivity)
+                    activity.hideProgressBar()
                 Log.e(activity.javaClass.simpleName, "Error updating taskList", e)
             }
 
@@ -167,7 +173,7 @@ class FireStoreClass {
 
     fun getAssignedMembersListDetails(
         activity: MembersActivity,
-        assignedTo: ArrayList<String>
+        assignedTo: ArrayList<String>,
     ) {
         firestore.collection(Constants.USERS)
             .whereIn(Constants.ID, assignedTo)

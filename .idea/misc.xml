@@ -5,10 +5,12 @@
       <map>
         <entry key="..\:/Users/bglag/AndroidStudioProjects/ProjeManag/app/src/main/res/drawable-anydpi/shape_dialog_rounded.xml" value="0.1575" />
         <entry key="..\:/Users/bglag/AndroidStudioProjects/ProjeManag/app/src/main/res/drawable/ic_add.xml" value="0.1575" />
+        <entry key="..\:/Users/bglag/AndroidStudioProjects/ProjeManag/app/src/main/res/drawable/ic_alert.xml" value="0.1575" />
         <entry key="..\:/Users/bglag/AndroidStudioProjects/ProjeManag/app/src/main/res/drawable/nav_header_main_background.xml" value="0.1575" />
         <entry key="..\:/Users/bglag/AndroidStudioProjects/ProjeManag/app/src/main/res/drawable/shape_button_rounded.xml" value="0.1575" />
         <entry key="..\:/Users/bglag/AndroidStudioProjects/ProjeManag/app/src/main/res/drawable/white_border_shape_button_rounded.xml" value="0.1575" />
         <entry key="..\:/Users/bglag/AndroidStudioProjects/ProjeManag/app/src/main/res/layout/activity_base.xml" value="0.25" />
+        <entry key="..\:/Users/bglag/AndroidStudioProjects/ProjeManag/app/src/main/res/layout/activity_card_details.xml" value="0.4" />
         <entry key="..\:/Users/bglag/AndroidStudioProjects/ProjeManag/app/src/main/res/layout/activity_create_board.xml" value="0.25" />
         <entry key="..\:/Users/bglag/AndroidStudioProjects/ProjeManag/app/src/main/res/layout/activity_intro.xml" value="0.264" />
         <entry key="..\:/Users/bglag/AndroidStudioProjects/ProjeManag/app/src/main/res/layout/activity_main.xml" value="0.24615384615384617" />
@@ -30,6 +32,7 @@
         <entry key="..\:/Users/bglag/AndroidStudioProjects/ProjeManag/app/src/main/res/layout/nav_header_main.xml" value="0.264" />
         <entry key="..\:/Users/bglag/AndroidStudioProjects/ProjeManag/app/src/main/res/menu/activity_main_drawer.xml" value="0.25" />
         <entry key="..\:/Users/bglag/AndroidStudioProjects/ProjeManag/app/src/main/res/menu/menu_add_member.xml" value="0.24615384615384617" />
+        <entry key="..\:/Users/bglag/AndroidStudioProjects/ProjeManag/app/src/main/res/menu/menu_delete_card.xml" value="0.25" />
         <entry key="..\:/Users/bglag/AndroidStudioProjects/ProjeManag/app/src/main/res/menu/menu_members.xml" value="0.25" />
       </map>
     </option>
