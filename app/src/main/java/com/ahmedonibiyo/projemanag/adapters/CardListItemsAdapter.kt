@@ -1,6 +1,7 @@
 package com.ahmedonibiyo.projemanag.adapters
 
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +12,7 @@ import kotlinx.android.synthetic.main.item_card.view.*
 
 open class CardListItemsAdapter(
     private val context: Context,
-    private var list: ArrayList<Card>
+    private var list: ArrayList<Card>,
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var onClickListener: OnClickListener? = null
@@ -32,9 +33,17 @@ open class CardListItemsAdapter(
 
         if (holder is MyViewHolder) {
 
+            if (model.labelColor.isNotEmpty()) {
+                holder.itemView.view_label_color.visibility = View.VISIBLE
+                holder.itemView.view_label_color
+                    .setBackgroundColor(Color.parseColor(model.labelColor))
+            } else {
+                holder.itemView.view_label_color.visibility = View.GONE
+            }
+
             holder.itemView.tv_card_name.text = model.name
             if (onClickListener != null) {
-                holder.itemView.setOnClickListener{
+                holder.itemView.setOnClickListener {
                     onClickListener!!.onClick(position)
                 }
             }
