@@ -172,7 +172,7 @@ class FireStoreClass {
     }
 
     fun getAssignedMembersListDetails(
-        activity: MembersActivity,
+        activity: Activity,
         assignedTo: ArrayList<String>,
     ) {
         firestore.collection(Constants.USERS)
@@ -187,9 +187,16 @@ class FireStoreClass {
                     usersList.add(user)
                 }
 
-                activity.setupMembersList(usersList)
+                if (activity is MembersActivity)
+                    activity.setupMembersList(usersList)
+                else if (activity is TaskListActivity)
+                    activity.boardMembersDetailsList(usersList)
             }
             .addOnFailureListener { e ->
+                if (activity is MembersActivity)
+                    activity.hideProgressBar()
+                else if (activity is TaskListActivity)
+                    activity.hideProgressBar()
                 Log.e(
                     activity.javaClass.simpleName,
                     "Error while fetching members list",

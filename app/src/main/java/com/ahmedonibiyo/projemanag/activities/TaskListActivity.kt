@@ -13,6 +13,7 @@ import com.ahmedonibiyo.projemanag.firebase.FireStoreClass
 import com.ahmedonibiyo.projemanag.models.Board
 import com.ahmedonibiyo.projemanag.models.Card
 import com.ahmedonibiyo.projemanag.models.Task
+import com.ahmedonibiyo.projemanag.models.User
 import com.ahmedonibiyo.projemanag.utils.Constants
 import kotlinx.android.synthetic.main.activity_task_list.*
 
@@ -20,6 +21,7 @@ class TaskListActivity : BaseActivity() {
 
     private lateinit var mBoardDetails: Board
     private lateinit var mBoardDocumentId: String
+    private lateinit var mAssignedMembersListDetail: ArrayList<User>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,6 +76,9 @@ class TaskListActivity : BaseActivity() {
 
         val adapter = TaskListItemsAdapter(this, board.taskList)
         rv_task_list.adapter = adapter
+
+        showProgressDialog(resources.getString(R.string.please_wait))
+        FireStoreClass().getAssignedMembersListDetails(this, mBoardDetails.assignedTo)
     }
 
     fun cardDetails(taskListPosition: Int, cardPosition: Int) {
@@ -81,6 +86,7 @@ class TaskListActivity : BaseActivity() {
         intent.putExtra(Constants.BOARD_DETAIL, mBoardDetails)
         intent.putExtra(Constants.TASK_LIST_ITEM_POSITION, taskListPosition)
         intent.putExtra(Constants.CARD_LIST_ITEM_POSITION, cardPosition)
+        intent.putExtra(Constants.BOARD_MEMBERS_LIST, mAssignedMembersListDetail)
         startActivityForResult(intent, CARD_DETAILS_REQUEST_CODE)
     }
 
@@ -162,6 +168,12 @@ class TaskListActivity : BaseActivity() {
         }
 
         return super.onOptionsItemSelected(item)
+    }
+
+    fun boardMembersDetailsList(list: ArrayList<User>) {
+        mAssignedMembersListDetail = list
+
+        hideProgressBar()
     }
 
     companion object {

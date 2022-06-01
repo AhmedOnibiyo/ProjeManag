@@ -51,4 +51,5 @@
     <string name="alert">Alert</string>
     <string name="confirmation_message_to_delete_card">Are you sure you want to delete \'%1$s\'?</string>
     <string name="str_select_label_color">Select Label Color</string>
+    <string name="str_select_member">Select Member</string>
 </resources>
